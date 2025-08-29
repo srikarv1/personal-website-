@@ -1,0 +1,833 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srikar Vadlamani - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --accent: #f59e0b;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --text: #f8fafc;
+            --text-secondary: #cbd5e1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, var(--bg) 0%, #1a1a2e 100%);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: rgba(15, 23, 42, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+        
+        nav a:hover, nav a.active {
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover::after, nav a.active::after {
+            width: 80%;
+            left: 10%;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+        
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 6rem 0 4rem;
+            position: relative;
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+        
+        /* Home Section */
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at 30% 40%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 10%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--text), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .hero-content .description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.4);
+        }
+        
+        .social-links {
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 1rem;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--text), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Cards */
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(37, 99, 235, 0.2);
+        }
+        
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .education-item h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-item .institution {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-item .period {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 20px 0;
+            position: relative;
+            width: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 30px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 3px solid var(--bg);
+            top: 30px;
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .project-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+        
+        .project-links a {
+            color: var(--text-secondary);
+            margin-left: 1rem;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .project-links a:hover {
+            color: var(--primary);
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-tag {
+            background: rgba(37, 99, 235, 0.2);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+        
+        /* Research Section */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+        
+        .research-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .research-meta {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--surface);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid rgba(100, 116, 139, 0.2);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .timeline::after {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 50px !important;
+                padding-right: 0 !important;
+            }
+            
+            .timeline-item::after {
+                left: 10px !important;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .projects-grid,
+            .education-grid,
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Srikar</div>
+            <ul>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#research" class="nav-link">Research</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Lakshmi Sai Srikar Vadlamani</h1>
+                <p class="subtitle">Full Stack Engineer & AI Researcher</p>
+                <p class="description">
+                    Passionate about building scalable software and advancing machine learning research. 
+                    Currently pursuing MS in Information Systems & Management at Carnegie Mellon University.
+                </p>
+                <a href="#experience" class="btn">Explore My Work</a>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/srikarv1" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/srikarv1" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:ssvadlam@andrew.cmu.edu" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+                <p>Academic journey in Computer Science and Information Systems</p>
+            </div>
+            <div class="education-grid">
+                <div class="card education-item fade-in">
+                    <img src="images/cmu.png" alt="Carnegie Mellon University Logo" style="height:40px; margin-bottom:10px;">
+                    <h3>Master of Science - Information Systems and Management</h3>
+                    <div class="institution">Carnegie Mellon University, Pittsburgh, PA</div>
+                    <div class="period">August 2025 - December 2026</div>
+                    <p><Em>Expected Graduation Date : Dec 2026</Em></p>
+                </div>
+                <div class="card education-item fade-in">
+                    <img src="images/dtu.png" alt="Delhi Technological University Logo" style="height:40px; margin-bottom:10px;">
+                    <h3>B.Tech Computer Engineering</h3>
+                    <div class="institution">Delhi Technological University, Delhi, India</div>
+                    <div class="period">August 2019 - May 2023</div>
+                    <p><strong>Minor:</strong> Machine Learning | <strong>GPA:</strong> 3.95/4.00</p>
+                    <p><strong>Award:</strong> DTU Research Excellence Award for Post Quantum and Private Key Cryptography Optimized for IoT Security</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">OOPS</span>
+                        <span class="tech-tag">DBMS</span>
+                        <span class="tech-tag">Data Structures</span>
+                        <span class="tech-tag">Operating Systems</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">Neural Networks</span>
+                        <span class="tech-tag">NLP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience</h2>
+                <p>Professional journey in software engineering and research</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <img src="images/bny.png" alt="BNY Mellon Logo" style="height:32px; vertical-align:middle; margin-right:10px;">
+                        <h3>Full Stack Engineer II</h3>
+                        <h4>Bank of New York Mellon, Chennai, India</h4>
+                        <div class="period">July 2023 - June 2025</div>
+                        <ul>
+                            <li>Built FX hedging features using Java SpringBoot, SQL, and React for applications handling multi-million dollar transactions</li>
+                            <li>Engineered JMS point-to-point system transmitting 10,000+ trade messages daily to downstream pricing systems</li>
+                            <li>Architected Multi Manager project enabling platform to support multiple managers for funds with different allocation hierarchies using graph-based models for 10+ funds</li>
+                            <li>Migrated application from Java 17 to 21, leveraging virtual threads to improve concurrency and resource efficiency</li>
+                            <li>Integrated Hazelcast distributed caching to reduce database lookups and improve computation latency</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java SpringBoot</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">JMS</span>
+                            <span class="tech-tag">Hazelcast</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <img src="images/sam.jpg" alt="Samsung Logo" style="height:32px; vertical-align:middle; margin-right:10px;">
+                        <h3>Research Intern</h3>
+                        <h4>Samsung Innovation Lab DTU, Delhi, India</h4>
+                        <div class="period">August 2022 - December 2022</div>
+                        <ul>
+                            <li>Led team of undergraduate researchers in collaboration with Samsung engineers to minimize miscalculation of accidental movements on Samsung wearables</li>
+                            <li>Built compressed 1D CNN model for gait analysis using accelerometer data with TensorFlow framework in Python</li>
+                            <li>Added signal processing with dynamic thresholding, vibration elimination, and peak prominence to count steps</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">CNN</span>
+                            <span class="tech-tag">Signal Processing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <img src="images/bny.png" alt="BNY Mellon Logo" style="height:32px; vertical-align:middle; margin-right:10px;">
+                        <h3>Software Development Intern</h3>
+                        <h4>Bank of New York Mellon, Chennai, India</h4>
+                        <div class="period">May 2022 - August 2022</div>
+                        <ul>
+                            <li>Built REST APIs and Kafka streams to transfer data between microservices and applications within the bank</li>
+                            <li>Tested individual components of developed software using Mockito and JUnit frameworks</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-tag">REST APIs</span>
+                            <span class="tech-tag">Kafka</span>
+                            <span class="tech-tag">Mockito</span>
+                            <span class="tech-tag">JUnit</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research">
+        <div class="container">
+            <div class="section-header">
+                <h2>Research</h2>
+                <p>Published research in cryptography, AI, and medical imaging</p>
+            </div>
+            <div class="research-grid">
+                <div class="card research-item fade-in">
+                    <h3>Post-Quantum Cryptography for IoT Security</h3>
+                    <div class="research-meta">Published in Springer Wireless Personal Communications Journal | 20+ Citations</div>
+                    <p>Proposed two Learning With Errors algorithms using VLE to safeguard 5G enabled IoT devices from quantum attacks. Utilized Seaborn to compare and plot metrics against NIST-approved post-quantum cryptography algorithms.</p>
+                    <a href="https://www.springerprofessional.de/en/post-quantum-public-and-private-key-cryptography-optimized-for-i/23864458" target="_blank" style="margin-left:10px; color:var(--primary); text-decoration:underline;" title="Read Paper">
+                        [Read Paper]
+                        </a>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Post-Quantum Cryptography</span>
+                        <span class="tech-tag">IoT Security</span>
+                        <span class="tech-tag">Learning With Errors</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Seaborn</span>
+                    </div>
+                </div>
+                
+                <div class="card research-item fade-in">
+                    <h3>GanCov: COVID-19 Detection</h3>
+                    <div class="research-meta">Published in Springer ICICC Conference Proceedings</div>
+                    <p>Developed a hybrid deep learning framework combining CNNs and GANs to detect COVID-19 from chest X-ray images. Implemented data augmentation using Non-Conditional GAN (NC-GAN) to generate synthetic medical images.</p>
+                     <a href="https://www.springerprofessional.de/en/gancov-a-deep-learning-and-gan-based-algorithm-to-detect-covid-1/25872262" target="_blank" style="margin-left:10px; color:var(--primary); text-decoration:underline;" title="Read Paper">
+                        [Read Paper]
+                        </a>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">CNN</span>
+                        <span class="tech-tag">GAN</span>
+                        <span class="tech-tag">Medical Imaging</span>
+                        <span class="tech-tag">COVID-19 Detection</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <p>Software development projects from GitHub repositories</p>
+            </div>
+            <div class="projects-grid">
+                <div class="card project-card fade-in">
+                    <div class="project-header">
+                        <h3>Fine-tuned ALBERT for Question Answering</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/srikarv1/finetuned-albert" target="_blank" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p>Fine-tuned ALBERT on SQuAD v2 to enable accurate span-based extraction of answers from natural language passages. Implemented context-question feature conversion, inference pipeline, and prediction post-processing.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">ALBERT</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Question Answering</span>
+                        <span class="tech-tag">Jupyter Notebook</span>
+                    </div>
+                </div>
+                
+                <div class="card project-card fade-in">
+                    <div class="project-header">
+                        <h3>Route Planning Application</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/srikarv1/Routeplan_ADA" target="_blank" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p>Advanced route planning application implemented in C++ using algorithmic design and analysis principles. Optimizes path finding with efficient data structures and algorithms.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Algorithms</span>
+                        <span class="tech-tag">Data Structures</span>
+                        <span class="tech-tag">Route Planning</span>
+                    </div>
+                </div>
+                
+                <div class="card project-card fade-in">
+                    <div class="project-header">
+                        <h3>University Management System</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/srikarv1/university-management" target="_blank" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p>Comprehensive university management system with SQL backend connected via JDBC. Frontend developed using Java Swing for intuitive user interface and seamless database interactions.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">JDBC</span>
+                        <span class="tech-tag">Swing</span>
+                        <span class="tech-tag">Database Design</span>
+                    </div>
+                </div>
+                
+                <div class="card project-card fade-in">
+                    <div class="project-header">
+                        <h3>Pokemon Hierarchical Clustering</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/srikarv1/pokemon-HAC" target="_blank" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p>Machine learning project implementing Hierarchical Agglomerative Clustering to analyze and group Pokemon based on their statistical attributes and characteristics.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Clustering</span>
+                        <span class="tech-tag">Data Analysis</span>
+                    </div>
+                </div>
+                
+                <div class="card project-card fade-in">
+                    <div class="project-header">
+                        <h3>Python Game Suite</h3>
+                        <div class="project-links">
+                            <a href="https://github.com/srikarv1/python-game-3in1" target="_blank" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <p>Interactive gaming application featuring three different games built using Python's Turtle graphics library. Demonstrates object-oriented programming and game development principles.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Turtle Graphics</span>
+                        <span class="tech-tag">Game Development</span>
+                        <span class="tech-tag">OOP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+
+        // Update active navigation link
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html> 
