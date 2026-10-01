@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Srikar Vadlamani - Portfolio</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -261,9 +261,43 @@
             margin-bottom: 0.5rem;
         }
         
-        .education-item .period {
+        .education-item .period,
+        .period {
             color: var(--accent);
             font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h4 {
+            font-weight: 500;
+            margin: 0.25rem 0 0.5rem;
+        }
+
+        .card ul {
+            margin: 1rem 0 0 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .card li {
+            margin-bottom: 0.55rem;
+        }
+
+        .company-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+            display: inline-block;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-group h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
             margin-bottom: 1rem;
         }
         
@@ -458,7 +492,8 @@
             
             .projects-grid,
             .education-grid,
-            .research-grid {
+            .research-grid,
+            .skills-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -473,6 +508,7 @@
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#education" class="nav-link">Education</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#research" class="nav-link">Research</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
             </ul>
@@ -487,10 +523,11 @@
         <div class="container">
             <div class="hero-content">
                 <h1>Lakshmi Sai Srikar Vadlamani</h1>
-                <p class="subtitle">Full Stack Engineer & AI Researcher</p>
+                <p class="subtitle">Software Engineer & AI Researcher</p>
                 <p class="description">
-                    Passionate about building scalable software and advancing machine learning research. 
-                    Currently pursuing MS in Information Systems & Management at Carnegie Mellon University.
+                    Master's student in Information Systems Management at Carnegie Mellon University.
+                    Graduate researcher at Adobe (CMU Capstone) building RL-based deep research systems,
+                    after an SDE internship on AWS Redshift Query Optimization.
                 </p>
                 <a href="#experience" class="btn">Explore My Work</a>
                 <div class="social-links">
@@ -499,6 +536,9 @@
                     </a>
                     <a href="https://github.com/srikarv1" target="_blank" title="GitHub">
                         <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://scholar.google.com/scholar?q=Lakshmi+Sai+Srikar+Vadlamani" target="_blank" title="Google Scholar">
+                        <i class="fas fa-graduation-cap"></i>
                     </a>
                     <a href="mailto:ssvadlam@andrew.cmu.edu" title="Email">
                         <i class="fas fa-envelope"></i>
@@ -518,27 +558,30 @@
             <div class="education-grid">
                 <div class="card education-item fade-in">
                     <img src="images/cmu.png" alt="Carnegie Mellon University Logo" style="height:40px; margin-bottom:10px;">
-                    <h3>Master of Science - Information Systems and Management</h3>
+                    <h3>Master of Information Systems Management</h3>
                     <div class="institution">Carnegie Mellon University, Pittsburgh, PA</div>
-                    <div class="period">August 2025 - December 2026</div>
-                    <p><Em>Expected Graduation Date : Dec 2026</Em></p>
+                    <div class="period">August 2025 – December 2026</div>
+                    <p><strong>GPA:</strong> 3.95</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">AI Agents</span>
+                        <span class="tech-tag">Distributed Systems</span>
+                        <span class="tech-tag">Deep Learning</span>
+                        <span class="tech-tag">Machine Learning in Production</span>
+                        <span class="tech-tag">OOPS</span>
+                    </div>
                 </div>
                 <div class="card education-item fade-in">
                     <img src="images/dtu.png" alt="Delhi Technological University Logo" style="height:40px; margin-bottom:10px;">
                     <h3>B.Tech Computer Engineering</h3>
                     <div class="institution">Delhi Technological University, Delhi, India</div>
-                    <div class="period">August 2019 - May 2023</div>
-                    <p><strong>Minor:</strong> Machine Learning | <strong>GPA:</strong> 3.95/4.00</p>
+                    <div class="period">August 2019 – May 2023</div>
+                    <p><strong>Minor:</strong> Machine Learning</p>
                     <p><strong>Award:</strong> DTU Research Excellence Award for Post Quantum and Private Key Cryptography Optimized for IoT Security</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">OOPS</span>
-                        <span class="tech-tag">DBMS</span>
-                        <span class="tech-tag">Data Structures</span>
+                        <span class="tech-tag">Advanced Data Structures</span>
                         <span class="tech-tag">Operating Systems</span>
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">Deep Learning</span>
-                        <span class="tech-tag">Neural Networks</span>
-                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Database Systems</span>
+                        <span class="tech-tag">Compiler Design</span>
                     </div>
                 </div>
             </div>
@@ -555,63 +598,151 @@
             <div class="timeline">
                 <div class="timeline-item fade-in">
                     <div class="card">
-                        <img src="images/bny.png" alt="BNY Mellon Logo" style="height:32px; vertical-align:middle; margin-right:10px;">
-                        <h3>Full Stack Engineer II</h3>
-                        <h4>Bank of New York Mellon, Chennai, India</h4>
-                        <div class="period">July 2023 - June 2025</div>
+                        <i class="fab fa-adobe company-icon" aria-hidden="true"></i>
+                        <h3>Graduate Researcher</h3>
+                        <h4>Adobe Inc. [CMU Capstone], Pittsburgh, PA</h4>
+                        <div class="period">August 2026 – Present</div>
                         <ul>
-                            <li>Built FX hedging features using Java SpringBoot, SQL, and React for applications handling multi-million dollar transactions</li>
-                            <li>Engineered JMS point-to-point system transmitting 10,000+ trade messages daily to downstream pricing systems</li>
-                            <li>Architected Multi Manager project enabling platform to support multiple managers for funds with different allocation hierarchies using graph-based models for 10+ funds</li>
-                            <li>Migrated application from Java 17 to 21, leveraging virtual threads to improve concurrency and resource efficiency</li>
-                            <li>Integrated Hazelcast distributed caching to reduce database lookups and improve computation latency</li>
+                            <li>Spearheaded end-to-end post-training of an RL based deep research orchestrator using behavior cloning, DPO on counterfactual pairs, and GRPO on a LoRA adapted Qwen3-1.7B</li>
                         </ul>
                         <div class="tech-stack">
-                            <span class="tech-tag">Java SpringBoot</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">JMS</span>
-                            <span class="tech-tag">Hazelcast</span>
+                            <span class="tech-tag">Reinforcement Learning</span>
+                            <span class="tech-tag">DPO</span>
+                            <span class="tech-tag">GRPO</span>
+                            <span class="tech-tag">LoRA</span>
+                            <span class="tech-tag">Qwen3</span>
                         </div>
                     </div>
                 </div>
-                
+
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <i class="fab fa-aws company-icon" aria-hidden="true"></i>
+                        <h3>Software Development Engineer Intern</h3>
+                        <h4>Amazon Web Services – Redshift Query Optimization, East Palo Alto, CA</h4>
+                        <div class="period">June 2026 – August 2026</div>
+                        <ul>
+                            <li>Architected and launched Query Level Insights, a Redshift diagnostics platform that lets engineers trace regressions from benchmark run to SQL statement, plan node, segment, and slice using plan trees and execution timelines</li>
+                            <li>Reduced core comparison scans from approximately 120 to 6 for a typical 20-template workload through grouped Redshift queries, materialized-view fallback, and S3 caching; backed the feature with 259 automated tests</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-tag">AWS Redshift</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">S3</span>
+                            <span class="tech-tag">Query Optimization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="card">
+                        <img src="images/bny.png" alt="BNY Mellon Logo" style="height:32px; vertical-align:middle; margin-right:10px;">
+                        <h3>Full Stack Engineer II, Markets</h3>
+                        <h4>The Bank of New York Mellon, Chennai, India</h4>
+                        <div class="period">July 2023 – May 2025</div>
+                        <ul>
+                            <li>Containerized and orchestrated Java SpringBoot microservices using Docker, Kubernetes, and Helm; managed multi-region FX hedging workflows and currency risk for 200+ global institutions</li>
+                            <li>Re-engineered a trade pipeline by integrating an Apache Kafka and JMS messaging backbone (10K+ trades/day) with Hazelcast distributed caching, slashing MySQL load by 70% and trade processing latency by 30%</li>
+                            <li>Owned the full production lifecycle by automating build-to-deploy workflows via GitLab CI/CD (50% faster releases); provided Level-3 support for high-priority incidents using Grafana and Splunk</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Java SpringBoot</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">Kafka</span>
+                            <span class="tech-tag">Hazelcast</span>
+                            <span class="tech-tag">GitLab CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="timeline-item fade-in">
                     <div class="card">
                         <img src="images/sam.jpg" alt="Samsung Logo" style="height:32px; vertical-align:middle; margin-right:10px;">
-                        <h3>Research Intern</h3>
-                        <h4>Samsung Innovation Lab DTU, Delhi, India</h4>
-                        <div class="period">August 2022 - December 2022</div>
+                        <h3>Machine Learning Research Assistant</h3>
+                        <h4>Samsung Innovation Lab, DTU, Delhi, India</h4>
+                        <div class="period">August 2022 – December 2022</div>
                         <ul>
-                            <li>Led team of undergraduate researchers in collaboration with Samsung engineers to minimize miscalculation of accidental movements on Samsung wearables</li>
-                            <li>Built compressed 1D CNN model for gait analysis using accelerometer data with TensorFlow framework in Python</li>
-                            <li>Added signal processing with dynamic thresholding, vibration elimination, and peak prominence to count steps</li>
+                            <li>Reduced misclassification of steps on Samsung wearables by developing a compressed 1D-CNN model for gait analysis using TensorFlow; achieved 92% classification accuracy while reducing model size by 60% for on-device inference</li>
                         </ul>
                         <div class="tech-stack">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">CNN</span>
-                            <span class="tech-tag">Signal Processing</span>
+                            <span class="tech-tag">1D-CNN</span>
+                            <span class="tech-tag">On-device ML</span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item fade-in">
                     <div class="card">
                         <img src="images/bny.png" alt="BNY Mellon Logo" style="height:32px; vertical-align:middle; margin-right:10px;">
-                        <h3>Software Development Intern</h3>
-                        <h4>Bank of New York Mellon, Chennai, India</h4>
-                        <div class="period">May 2022 - August 2022</div>
+                        <h3>Software Engineering Intern</h3>
+                        <h4>The Bank of New York Mellon, Chennai, India</h4>
+                        <div class="period">May 2022 – July 2022</div>
                         <ul>
-                            <li>Built REST APIs and Kafka streams to transfer data between microservices and applications within the bank</li>
-                            <li>Tested individual components of developed software using Mockito and JUnit frameworks</li>
+                            <li>Built REST APIs to ingest over 5M+ FX quotes/day from third-party sources into BNY’s data warehouse, powering an AI-driven analytics platform used by investment bankers for trading insights</li>
+                            <li>Ensured scalable, fault-tolerant systems by achieving 95%+ unit test coverage using Mockito/JUnit and collaborating with senior engineers in design and code reviews</li>
                         </ul>
                         <div class="tech-stack">
                             <span class="tech-tag">REST APIs</span>
-                            <span class="tech-tag">Kafka</span>
                             <span class="tech-tag">Mockito</span>
                             <span class="tech-tag">JUnit</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skills</h2>
+                <p>Languages, AI/ML, and infrastructure I work with</p>
+            </div>
+            <div class="skills-grid">
+                <div class="card skill-group fade-in">
+                    <h3>Programming Languages</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">C/C++</span>
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Node.js</span>
+                    </div>
+                </div>
+                <div class="card skill-group fade-in">
+                    <h3>AI / ML</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">pandas</span>
+                        <span class="tech-tag">HuggingFace</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">FastMCP</span>
+                        <span class="tech-tag">MCP</span>
+                        <span class="tech-tag">LLM Agents</span>
+                        <span class="tech-tag">Cursor</span>
+                        <span class="tech-tag">Windsurf</span>
+                    </div>
+                </div>
+                <div class="card skill-group fade-in">
+                    <h3>Cloud and Tools</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">GCP</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Spark</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Vercel</span>
                     </div>
                 </div>
             </div>
@@ -666,9 +797,25 @@
         <div class="container">
             <div class="section-header">
                 <h2>Projects</h2>
-                <p>Software development projects from GitHub repositories</p>
+                <p>Selected systems and machine learning work</p>
             </div>
             <div class="projects-grid">
+                <div class="card project-card fade-in">
+                    <div class="project-header">
+                        <h3>Movie Recommendation Engine</h3>
+                    </div>
+                    <div class="research-meta">CMU 17-645 · Python, Kafka, SQLite, Flask, Prometheus, Grafana</div>
+                    <p>Engineered a movie recommendation system processing 223K+ real-time Kafka events via a matrix factorization model with SQLite persistence and a sub-100ms Flask REST API. Backed by an evaluation framework tracking Precision@K, Click-Through Rate, and Match Rate through real-time telemetry matching across 16K+ users.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Prometheus</span>
+                        <span class="tech-tag">Grafana</span>
+                    </div>
+                </div>
+
                 <div class="card project-card fade-in">
                     <div class="project-header">
                         <h3>Fine-tuned ALBERT for Question Answering</h3>
@@ -684,7 +831,6 @@
                         <span class="tech-tag">ALBERT</span>
                         <span class="tech-tag">NLP</span>
                         <span class="tech-tag">Question Answering</span>
-                        <span class="tech-tag">Jupyter Notebook</span>
                     </div>
                 </div>
                 
@@ -703,61 +849,6 @@
                         <span class="tech-tag">Algorithms</span>
                         <span class="tech-tag">Data Structures</span>
                         <span class="tech-tag">Route Planning</span>
-                    </div>
-                </div>
-                
-                <div class="card project-card fade-in">
-                    <div class="project-header">
-                        <h3>University Management System</h3>
-                        <div class="project-links">
-                            <a href="https://github.com/srikarv1/university-management" target="_blank" title="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <p>Comprehensive university management system with SQL backend connected via JDBC. Frontend developed using Java Swing for intuitive user interface and seamless database interactions.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Java</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">JDBC</span>
-                        <span class="tech-tag">Swing</span>
-                        <span class="tech-tag">Database Design</span>
-                    </div>
-                </div>
-                
-                <div class="card project-card fade-in">
-                    <div class="project-header">
-                        <h3>Pokemon Hierarchical Clustering</h3>
-                        <div class="project-links">
-                            <a href="https://github.com/srikarv1/pokemon-HAC" target="_blank" title="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <p>Machine learning project implementing Hierarchical Agglomerative Clustering to analyze and group Pokemon based on their statistical attributes and characteristics.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">Clustering</span>
-                        <span class="tech-tag">Data Analysis</span>
-                    </div>
-                </div>
-                
-                <div class="card project-card fade-in">
-                    <div class="project-header">
-                        <h3>Python Game Suite</h3>
-                        <div class="project-links">
-                            <a href="https://github.com/srikarv1/python-game-3in1" target="_blank" title="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <p>Interactive gaming application featuring three different games built using Python's Turtle graphics library. Demonstrates object-oriented programming and game development principles.</p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Turtle Graphics</span>
-                        <span class="tech-tag">Game Development</span>
-                        <span class="tech-tag">OOP</span>
                     </div>
                 </div>
             </div>
